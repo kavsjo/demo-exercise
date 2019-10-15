@@ -28,12 +28,19 @@ app.get('/getcustomers', (req, res) => {
 })
 
 app.get('/getcustomer/:id', (req, res) => {
+    let customer = []
     customers.get()
         .then((snapshot) => {
             snapshot.forEach((doc) => {
                 const _id = req.params.id
                 if (doc.id === _id)
-                    res.json(doc.data())
+                    customer.push({
+                        Id: doc.id,
+                        Customer: doc.data()
+                    })
+            })
+            res.json({
+                Data: customer
             })
         })
         .catch((err) => {
