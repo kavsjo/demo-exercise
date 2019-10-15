@@ -1,4 +1,4 @@
-const firebase = require('firebase');
+const firebase = require('firebase')
 
 const config = {
     apiKey: "AIzaSyDh3zZuQRu9N7Cm2IyeSINBlwsfYS6mqdQ",
@@ -9,10 +9,10 @@ const config = {
     messagingSenderId: "518471512705",
     appId: "1:518471512705:web:044e253069a040e5129380",
     measurementId: "G-JNK14VJLHS"
-};
+}
 
-firebase.initializeApp(config);
+firebase.initializeApp(config)
 
-const db = firebase.firestore();
+const db = firebase.firestore()
 
-module.exports = db;
+module.exports = db
