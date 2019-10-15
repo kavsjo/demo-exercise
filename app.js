@@ -19,7 +19,7 @@ app.get('/getcustomers', (req, res) => {
                 })
             })
             res.json({
-                allCustomers
+                Customers: allCustomers
             })
         })
         .catch((err) => {
@@ -27,7 +27,7 @@ app.get('/getcustomers', (req, res) => {
         })
 })
 
-app.get('/getcutomer/:id', (req, res) => {
+app.get('/getcustomer/:id', (req, res) => {
     customers.get()
         .then((snapshot) => {
             snapshot.forEach((doc) => {
