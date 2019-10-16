@@ -9,18 +9,18 @@ app.get('/', (req, res) => {
 })
 
 app.get('/getcustomers', (req, res) => {
-    let customers = []
+    let customer = []
     customers.get()
         .then((snapshot) => {
             snapshot.forEach((doc) => {
-                allCustomers.push({
+                customer.push({
                     id: doc.id,
                     name: doc.data().name
                 })
             })
-            res.json({
-                 customers
-            })
+            res.json(
+                customer
+            )
         })
         .catch((err) => {
             console.log('Error getting documents', err)

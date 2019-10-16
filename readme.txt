@@ -1,7 +1,9 @@
 Github repos: https://github.com/kavsjo/demo-exercise
 App Url: https://cloud-ex-255913.appspot.com/
 Get all customers: /getcustomer: http://cloud-ex-255913.appspot.com/getcustomers
-Get one customer by: /getcustomer/:id  http://cloud-ex-255913.appspot.com/getcustomer/247I9mi7MfY7lWmcJ5XC
+Get one customer by: /getcustomer/:id  http://cloud-ex-255913.appspot.com/getcustomer/247I9mi7MfY7lWmcJ5XC, 
+                                       http://cloud-ex-255913.appspot.com/getcustomer/0sTzAeNZT3hGonPrH0Ba 
+                                       http://cloud-ex-255913.appspot.com/getcustomer/qXzQRXIO6xRFvyXWBbuy
 Customer Ids: 
 1.	0sTzAeNZT3hGonPrH0Ba 
 2.	247I9mi7MfY7lWmcJ5XC 
