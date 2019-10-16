@@ -9,17 +9,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/getcustomers', (req, res) => {
-    let allCustomers = []
+    let customers = []
     customers.get()
         .then((snapshot) => {
             snapshot.forEach((doc) => {
                 allCustomers.push({
-                    Id: doc.id,
-                    Name: doc.data().Name
+                    id: doc.id,
+                    name: doc.data().name
                 })
             })
             res.json({
-                Customers: allCustomers
+                 customers
             })
         })
         .catch((err) => {
@@ -29,24 +29,39 @@ app.get('/getcustomers', (req, res) => {
 
 app.get('/getcustomer/:id', (req, res) => {
     let customer = []
-    customers.get()
-        .then((snapshot) => {
-            snapshot.forEach((doc) => {
-                const _id = req.params.id
-                if (doc.id === _id)
-                    customer.push({
-                        Id: doc.id,
-                        Customer: doc.data()
-                    })
-            })
+    const _id = req.params.id
+    customers.doc(_id).get()
+        .then(doc => {
+            if (doc.exists) {
+                customer.push({
+                    id: doc.id,
+                    customer: doc.data()
+                })
+            }
             res.json({
-                Data: customer
+                customer
             })
         })
         .catch((err) => {
             console.log('Error getting documents', err)
         })
-})   
+}) 
+
+app.get('/get/:id', (req, res) => {
+    const _id = req.params.id
+    customers.doc(_id).get()
+        .then(doc => {
+            if(doc.exists) {
+                res.json(doc.data())
+                }
+            else{
+                res.send('couldnt find document' + _id)
+            }
+        })
+        .catch((err) => {
+            console.log('Error getting documents', err)
+        })
+})
 
 app.listen(8080, () =>
   console.log('App listening on port 8080!'),
