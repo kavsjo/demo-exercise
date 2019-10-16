@@ -47,22 +47,6 @@ app.get('/getcustomer/:id', (req, res) => {
         })
 }) 
 
-app.get('/get/:id', (req, res) => {
-    const _id = req.params.id
-    customers.doc(_id).get()
-        .then(doc => {
-            if(doc.exists) {
-                res.json(doc.data())
-                }
-            else{
-                res.send('couldnt find document' + _id)
-            }
-        })
-        .catch((err) => {
-            console.log('Error getting documents', err)
-        })
-})
-
 app.listen(8080, () =>
   console.log('App listening on port 8080!'),
 )
