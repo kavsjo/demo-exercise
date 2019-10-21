@@ -13,14 +13,13 @@ app.get('/getcustomers', (req, res) => {
     customersCollection.get()
         .then((snapshot) => {
             snapshot.forEach((doc) => {
+                let data = doc.data()
+                data['id']=doc.id
                 customers.push({
-                    id: doc.id,
-                    customer: doc.data()
+                    customer: data
                 })
             })
-            res.json(
-                customers
-            )
+            res.json(customers)
         })
         .catch((err) => {
             console.log('Error getting documents', err)
@@ -28,22 +27,16 @@ app.get('/getcustomers', (req, res) => {
 })
 
 app.get('/getcustomer/:id', (req, res) => {
-    let customer = []
+    let customer = {}
     const _id = req.params.id
     customersCollection.doc(_id).get()
         .then(doc => {
             if (!doc.exists) {
-                res.json(
-                    customer
-                )
+                res.json(customer)
             }
-            customer.push({
-                id: doc.id,
-                customer: doc.data()
-            })
-            res.json(
-                customer
-            )
+            let data = doc.data()
+            data['id'] = doc.id
+            res.json(data)
         })
         .catch((err) => {
             console.log('Error getting documents', err)
